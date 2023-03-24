@@ -17,7 +17,8 @@ app.post('/predict', async (req, res) => {
 
 const loadModel = async (message) => {
     const lowercaseSentenceArray = message.toLowerCase().replace(/[^\w\s]/g, ' ').split(' ');
-    const inputTensor = tf.tensor(tokenize(lowercaseSentenceArray));
+    const padding = lowercaseSentenceArray.splice(0, 19);
+    const inputTensor = tf.tensor(tokenize(padding));
     const prediction = model.predict(inputTensor);
     const result = prediction.dataSync()[1] > 0.5 ? 'SPAM' : 'NO SPAM';
     console.log(`${message}: ${result}`);

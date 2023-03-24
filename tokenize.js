@@ -3,6 +3,7 @@ const DICTIONARY = require('./dictionary');
 const ENCODING_LENGTH = 20;
 
 function tokenize(wordArray) {
+    console.log(wordArray);
   let returnArray = [DICTIONARY.START];
 
   for (var i = 0; i < wordArray.length; i++) {
