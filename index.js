@@ -22,7 +22,7 @@ const loadModel = async (message) => {
     const prediction = model.predict(inputTensor);
     const result = prediction.dataSync()[1] > 0.5 ? 'SPAM' : 'NO SPAM';
     console.log(`${message}: ${result}`);
-    return { result };
+    return { result, prediction: prediction.dataSync()[1] };
 }
 
 // loadModel("mano a que hora vienes por el pan");
